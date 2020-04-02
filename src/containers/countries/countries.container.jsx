@@ -1,25 +1,30 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './countries.styles.css'
 
 import Card from '../../components/card/card.component';
 
-class Countries extends Component {
-    render() {
+const Countries = ({ data }) =>  {
+    
         return (
-            <Card />
+            <div className='countries-container'>
+                {data.map(cntry => (
+                    <Card
+                    key={cntry.name}
+                    imgUrl={cntry.flag}
+                    name={cntry.name}
+                    population={cntry.population}
+                    region={cntry.region}
+                    capital={cntry.capital}
+                    />
+                ))}
+            </div>
         )
-    }
+
 }
 
-// axios.get('https://restcountries.eu/rest/v2/all')
-// .then(res => {
-//   for (let cntry in res.data) {
-//     console.log(res.data[cntry].name,
-//       res.data[cntry].population,
-//       res.data[cntry].region,
-//       res.data[cntry].capital )
-//   }
-// })
+//
 
 export default Countries;
+
+
